@@ -1,0 +1,26 @@
+
+<h1>Lista de Restaurantes</h1>
+<%= link_to 'Cadastrar', new_restaurant_path %>
+<%= link_to 'Home', welcome_index_path %>
+
+<table>
+  <tr>
+    <th>Nome</th>
+    <th>Categoria</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+  <% @restaurants.each do |restaurant| %>
+    <tr>
+      <td><%= restaurant.name %></td>
+      <td><%= restaurant.category %></td>
+      <td><%= link_to 'Exibir', restaurant_path(restaurant) %></td>
+      <td><%= link_to 'Editar', edit_restaurant_path(restaurant) %></td>
+      <td><%= link_to 'Apagar', restaurant_path(restaurant),
+              method: :delete,
+              data: { confirm: 'Tem certeza?' } %></td>
+    </tr>
+  <% end %>
+</table>
